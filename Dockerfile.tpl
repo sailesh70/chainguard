@@ -1,5 +1,5 @@
 # Template for Nginx 1.26.3 Dockerfile
-FROM nginx:1.27.4
+FROM nginx:1.26.3
 
 # Default labels
 {{- range $key, $value := .labels }}

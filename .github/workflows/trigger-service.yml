@@ -14,6 +14,6 @@ jobs:
       - name: Send Dispatch Event
         run: |
           curl -X POST -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
             https://api.github.com/repos/sailesh70/service-repo/actions/workflows/generate-dockerfile.yml/dispatches \
             -d '{"ref":"main"}'

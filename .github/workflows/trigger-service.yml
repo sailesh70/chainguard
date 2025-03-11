@@ -1,0 +1,19 @@
+name: Trigger Service Repository
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [closed]
+
+jobs:
+  notify-service:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Dispatch Event
+        run: |
+          curl -X POST -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/sailesh70/service-repo/actions/workflows/generate-dockerfile.yml/dispatches \
+            -d '{"ref":"main"}'
